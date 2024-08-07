@@ -3,4 +3,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+  require 'sidekiq/web'
+  require 'sidekiq/cron/web'
+
+    # mount Sidekiq::Web in your Rails app
+  mount Sidekiq::Web => "amaha/sidekiq"
 end

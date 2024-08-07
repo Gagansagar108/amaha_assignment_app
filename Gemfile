@@ -71,8 +71,6 @@ group :test do
 
 end
 
-
-
 gem "redis-store"
 
 gem "redis-rails"
