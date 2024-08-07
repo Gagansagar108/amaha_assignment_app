@@ -24,7 +24,7 @@ default: &default
 development:
   <<: *default
   database: <%= Rails.application.credentials.dig(:database, :name) %>
-  username: <%= Rails.application.credentials.dig(:database, :username) %>
+  username: <%= Rails.application.credentials.dig(:database, :user) %>
   password: <%= Rails.application.credentials.dig(:database, :password) %>
   host: <%= Rails.application.credentials.dig(:database, :host) %>
   port: <%= Rails.application.credentials.dig(:database, :port) %>
