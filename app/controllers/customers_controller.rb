@@ -20,7 +20,7 @@ class CustomersController < ApplicationController
     end
 
     def get_file_data(params)
-        FileReader.get_text_file_data(params[:file_url]))
+        FileReader.get_text_file_data(params[:file_url])
     end 
 
     def filter_data(file_data,params)
