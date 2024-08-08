@@ -7,7 +7,7 @@ class CustomersController < ApplicationController
         file_url = params[:file_url]
 
         file_data = get_file_data(file_url)
-        binding.pry
+        
         DistanceCalculator.get_Haversine_distance()
     end 
 
@@ -20,10 +20,10 @@ class CustomersController < ApplicationController
 
     def get_file_data(file_url)
         require 'open-uri'
+        binding.pry
         FileReader.get_text_file_data(file_url)
     end 
 
-    
 
 end 
 
