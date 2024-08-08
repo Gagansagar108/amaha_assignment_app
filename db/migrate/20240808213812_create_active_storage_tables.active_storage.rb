@@ -10,6 +10,7 @@ class CreateActiveStorageTables < ActiveRecord::Migration[5.2]
       t.string   :content_type
       t.text     :metadata
       t.string   :service_name, null: false
+      t.bigint   :byte_size
       t.string   :checksum
 
       if connection.supports_datetime_with_precision?
