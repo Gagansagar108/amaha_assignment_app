@@ -13,7 +13,7 @@ class FilesController < ApplicationController
 
         response = direct_upload_json(blob)
         
-        update_file_url(response)
+        update_file_url(blob, response)
 
         render json: 
     end
@@ -34,7 +34,7 @@ class FilesController < ApplicationController
         ).as_json
     end
 
-    def update_file_url(response)
+    def update_file_url(blob, response)
       file_url = eval("response['url'].to_s.split(response[:key].to_s).first+response['key']")
       blob.update_attribute(:file_url, file_url)
     end 
