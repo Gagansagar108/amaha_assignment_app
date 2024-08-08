@@ -2,7 +2,7 @@ class FilesController < ApplicationController
     skip_before_action :verify_authenticity_token, only: :create
     def create
         blob_params =  blob_params()
-        binding.pry
+       
         blob = ActiveStorage::Blob.create_before_direct_upload!(
             filename: blob_params[:filename],
             byte_size: blob_params[:byte_size],
@@ -20,6 +20,7 @@ class FilesController < ApplicationController
     end
 
     def direct_upload_json(blob)
+      binding.pry
         blob.as_json(root: false, methods: :signed_id).merge(
           direct_upload: {
             url: blob.service_url_for_direct_upload,
