@@ -13,7 +13,7 @@ class CustomersController < ApplicationController
     private
     
     def get_params
-        params.require(:file_url).permit(:n_neighbours, :file_url)
+        params.require(:file_url)
     end
 
     def get_file_data(file_url)
