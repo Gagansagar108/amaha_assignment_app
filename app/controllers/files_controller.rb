@@ -31,12 +31,11 @@ class FilesController < ApplicationController
             url: url,
             headers: blob.service_headers_for_direct_upload
           }
-        )
+        ).as_json
     end
 
     def update_file_url(response)
-      binding.pry
-      file_url = eval("response['direct_upload'].to_h['url'].split(response[:key]).first+response['key']")
+      file_url = eval("response['url'].to_s.split(response[:key].to_s).first+response['key']")
       blob.update_attribute(:file_url, file_url)
     end 
 end 
