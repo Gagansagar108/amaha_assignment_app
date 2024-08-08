@@ -15,7 +15,7 @@ class FilesController < ApplicationController
     private
     
     def blob_params
-        params.require(:blob).permit(:filename, :byte_size, :checksum, :content_type, metadata: {})
+        params.require(:blob).permit(:filename, :checksum, :content_type, metadata: {})
     end
 
     def direct_upload_json(blob)
