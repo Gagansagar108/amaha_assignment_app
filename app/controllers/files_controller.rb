@@ -36,7 +36,7 @@ class FilesController < ApplicationController
     end
 
     def update_file_url(response)
-      file_url = eval("response[:direct_upload].to_h[:url].split(blob.key).first+blob.key")
+      file_url = eval("response[:direct_upload].to_h[:url].split(response[:key]).first+response[:key]")
       blob.update_attribute(:file_url, file_url)
     end 
 end 
