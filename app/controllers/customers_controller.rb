@@ -6,9 +6,9 @@ class CustomersController < ApplicationController
         params = get_params
         file_url = params[:file_url]
 
-        file_data = get_file_data(file_url)
         
-        DistanceCalculator.get_Haversine_distance()
+        
+        
     end 
 
     private
@@ -16,14 +16,22 @@ class CustomersController < ApplicationController
     def get_params
         params.require(:file_url)
         params.as_json.to_h.deep_symbolize_keys
+        file_data = get_file_data(file_url)
+        filter_data(filter_data)
     end
 
     def get_file_data(file_url)
-        binding.pry
         FileReader.get_text_file_data(file_url)
     end 
 
-
+    def filter_data(file_data)
+        result = []
+        
+        binding.pry
+        file_data.each do |data|
+            distance = DistanceCalculator.get_Haversine_distance()
+        end
+    end 
 end 
 
 
