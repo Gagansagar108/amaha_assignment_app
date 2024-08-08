@@ -9,8 +9,9 @@ class CustomersController < ApplicationController
         
         file_data = get_file_data(file_url)
         
-        filter_data(file_data)
+        res = filter_data(file_data)
         
+        render json: res
     end 
 
     private
@@ -29,12 +30,14 @@ class CustomersController < ApplicationController
         result = []
         lat_y = DistanceConstants::OFFICE_LAT
         long_y = DistanceConstants::OFFICE_LONG
-        binding.pry
+
         file_data.each do |data|
-            lat_x = data["latitude"]
-            long_x = data["longitude"]
+            lat_x = data["latitude"].to_f
+            long_x = data["longitude"].to_f
             distance = DistanceCalculator.get_Haversine_distance(lat_x, long_x, lat_y, long_y)
+            result.push(data) if distance <= 100
         end
+        result
     end 
 end 
 
