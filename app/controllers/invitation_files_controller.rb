@@ -1,4 +1,4 @@
-class InvitationFileController < ApplicationController
+class InvitationFilesController < ApplicationController
     def create
         blob = ActiveStorage::Blob.create_before_direct_upload!(blob_params)
         render json: direct_upload_json(blob)

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  post 'upload_invitation_file', to: 'invitation_file#create'
+  post 'upload_invitation_file', to: 'invitation_files#create'
   
   require 'sidekiq/web'
   require 'sidekiq/cron/web'
