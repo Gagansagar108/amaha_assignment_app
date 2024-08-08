@@ -5,7 +5,6 @@ class FilesController < ApplicationController
        
         blob = ActiveStorage::Blob.create_before_direct_upload!(
             filename: blob_params[:filename],
-            byte_size: blob_params[:byte_size],
             checksum: blob_params[:checksum],
             content_type: blob_params[:content_type],
             metadata: blob_params[:metadata]
