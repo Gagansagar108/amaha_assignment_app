@@ -1,3 +1,3 @@
-class Files < ApplicationRecord
-    
+class File < ApplicationRecord
+
 end
