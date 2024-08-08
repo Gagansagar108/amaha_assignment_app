@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   post 'upload_invitation_file', to: 'files#create'
-  get 'customers/get_nearest_customers', to: 'customers#get_nearest_customers'
+  get 'get_nearest_customers', to: 'customers#get_nearest_customers'
   require 'sidekiq/web'
   require 'sidekiq/cron/web'
 
