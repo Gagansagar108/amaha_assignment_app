@@ -11,9 +11,11 @@ class FilesController < ApplicationController
             metadata: blob_params[:metadata]
           )
 
-        update_file_url(blob)
+        response = direct_upload_json(blob)
+        
+        update_file_url(response)
 
-        render json: direct_upload_json(blob)
+        render json: 
     end
 
     private
@@ -25,18 +27,16 @@ class FilesController < ApplicationController
     def direct_upload_json(blob)
         url = blob.service_url_for_direct_upload(expires_in: 15.minutes)
         
-        response = blob.as_json(root: false, methods: :signed_id).merge(
+        blob.as_json(root: false, methods: :signed_id).merge(
           direct_upload: {
             url: url,
             headers: blob.service_headers_for_direct_upload
           }
         )
-
-        return response
     end
 
-    def update_file_url(blob)
-      file_url = eval("url.split(blob.key).first+blob.key")
+    def update_file_url(response)
+      file_url = eval("response[:direct_upload].to_h[:url].split(blob.key).first+blob.key")
       blob.update_attribute(:file_url, file_url)
     end 
 end 
