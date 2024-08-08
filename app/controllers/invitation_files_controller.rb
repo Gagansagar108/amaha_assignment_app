@@ -1,4 +1,5 @@
 class InvitationFilesController < ApplicationController
+    skip_before_action :verify_authenticity_token, only: :create
     def create
         blob = ActiveStorage::Blob.create_before_direct_upload!(blob_params)
         render json: direct_upload_json(blob)
