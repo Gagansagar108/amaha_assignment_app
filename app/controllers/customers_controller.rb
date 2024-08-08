@@ -3,6 +3,7 @@ class CustomersController < ApplicationController
     
     
     def get_nearest_customers
+        binding.pry
         params = get_params
         file_url = params.file_url
 
@@ -17,7 +18,7 @@ class CustomersController < ApplicationController
 
     def get_file_data(file_url)
         require 'open-uri'
-        binding.pry
+        
         FileReader.get_text_file_data(file_url)
     end 
 
