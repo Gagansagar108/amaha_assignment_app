@@ -14,6 +14,7 @@ class CustomersController < ApplicationController
     
     def get_params
         params.require(:file_url)
+        params
     end
 
     def get_file_data(file_url)
