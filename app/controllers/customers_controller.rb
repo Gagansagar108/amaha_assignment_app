@@ -4,8 +4,8 @@ class CustomersController < ApplicationController
     
     def get_nearest_customers
         binding.pry
-        params = get_params
-        file_url = params.file_url
+        data = get_params
+        file_url = data.file_url
 
         file_data = get_file_data(file_url)
     end 
