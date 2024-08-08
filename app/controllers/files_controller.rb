@@ -12,7 +12,7 @@ class FilesController < ApplicationController
           )
         render json: direct_upload_json(blob)
     end
-    
+
     private
     
     def blob_params
@@ -20,7 +20,7 @@ class FilesController < ApplicationController
     end
 
     def direct_upload_json(blob)
-      binding.pry
+      
         blob.as_json(root: false, methods: :signed_id).merge(
           direct_upload: {
             url: blob.service_url_for_direct_upload(expires_in: 15.minutes),

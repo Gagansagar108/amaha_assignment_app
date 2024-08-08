@@ -35,7 +35,6 @@ class CustomersController < ApplicationController
             distance = DistanceCalculator.get_Haversine_distance(lat_x, long_x, lat_y, long_y)
             result.push(data.slice('user_id', 'name')) if distance <= (params[:distance_range] || DistanceConstants::DISTANCE_RANGE).to_f
         end
-       
         result
     end 
 
