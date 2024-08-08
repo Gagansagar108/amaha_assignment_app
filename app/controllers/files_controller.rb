@@ -5,6 +5,7 @@ class FilesController < ApplicationController
        
         blob = ActiveStorage::Blob.create_before_direct_upload!(
             filename: blob_params[:filename],
+            byte_size: blob_params[:byte_size],
             checksum: blob_params[:checksum],
             content_type: blob_params[:content_type],
             metadata: blob_params[:metadata]
@@ -15,7 +16,7 @@ class FilesController < ApplicationController
     private
     
     def blob_params
-        params.require(:blob).permit(:filename, :checksum, :content_type, metadata: {})
+        params.require(:blob).permit(:filename, :byte_size, :checksum, :content_type, metadata: {})
     end
 
     def direct_upload_json(blob)
