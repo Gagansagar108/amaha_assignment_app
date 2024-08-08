@@ -1,7 +1,4 @@
-class CustomersController < ApplicationController
-    url = 'https://cogoport-testing.sgp1.digitaloceanspaces.com/952beeb0b5eb6e485a5856ed84ca07c0/customers_file.txt'
-    
-    
+class CustomersController < ApplicationController    
     def get_nearest_customers
         params = get_params
         
@@ -9,9 +6,11 @@ class CustomersController < ApplicationController
         
         file_data = get_file_data(file_url)
         
-        res = filter_data(file_data)
+        result = filter_data(file_data)
         
-        render json: res
+        sort_result(result)
+        
+        render json: {"data": result, "count": result.count}
     end 
 
     private
@@ -30,14 +29,17 @@ class CustomersController < ApplicationController
         result = []
         lat_y = DistanceConstants::OFFICE_LAT
         long_y = DistanceConstants::OFFICE_LONG
-        binding.pry
         file_data.each do |data|
             lat_x = data["latitude"].to_f
             long_x = data["longitude"].to_f
             distance = DistanceCalculator.get_Haversine_distance(lat_x, long_x, lat_y, long_y)
-            result.push(data) if distance <= 100
+            result.push(data.slice('user_id', 'name')) 
         end
         result
+    end 
+
+    def sort_result(result)
+        result.sort_by!{|res| res["user_id"]}
     end 
 end 
 
