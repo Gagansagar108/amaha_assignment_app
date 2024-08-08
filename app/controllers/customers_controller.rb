@@ -30,7 +30,7 @@ class CustomersController < ApplicationController
         result = []
         lat_y = DistanceConstants::OFFICE_LAT
         long_y = DistanceConstants::OFFICE_LONG
-
+        binding.pry
         file_data.each do |data|
             lat_x = data["latitude"].to_f
             long_x = data["longitude"].to_f
