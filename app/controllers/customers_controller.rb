@@ -19,7 +19,6 @@ class CustomersController < ApplicationController
     end
 
     def get_file_data(file_url)
-        require 'open-uri'
         binding.pry
         FileReader.get_text_file_data(file_url)
     end 

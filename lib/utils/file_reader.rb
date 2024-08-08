@@ -3,7 +3,7 @@
 module FileReader
     def self.get_text_file_data(file_url)
       require 'open-uri'
-
+      binding.pry
       begin 
         data = URI.open(file_url).read
       rescue 
