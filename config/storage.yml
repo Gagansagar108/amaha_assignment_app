@@ -8,11 +8,11 @@ local:
 
 # Use bin/rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 amazon:
-  service: s3
+  service: S3
   access_key_id: <%= Rails.application.credentials.dig(:aws_s3, :access_key_id) %>
   secret_access_key: <%= Rails.application.credentials.dig(:aws_s3, :secret_access_key) %>
   region: <%= Rails.application.credentials.dig(:aws_s3, :region) %>
-  bucket: amahabucket-<%= Rails.env %>
+  bucket: amahabucket
   public: true
   
 # Remember not to checkin your GCS keyfile to a repository
