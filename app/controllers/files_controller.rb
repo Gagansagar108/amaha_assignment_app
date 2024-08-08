@@ -1,7 +1,7 @@
-class InvitationFilesController < ApplicationController
+class FilesController < ApplicationController
     skip_before_action :verify_authenticity_token, only: :create
     def create
-        binding.pry
+        blob_params =  blob_params()
         blob = ActiveStorage::Blob.create_before_direct_upload!(
             filename: blob_params[:filename],
             byte_size: blob_params[:byte_size],
