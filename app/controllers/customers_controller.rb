@@ -4,10 +4,12 @@ class CustomersController < ApplicationController
     
     def get_nearest_customers
         params = get_params
+        
         file_url = params[:file_url]
-
         
+        file_data = get_file_data(file_url)
         
+        filter_data(file_data)
         
     end 
 
@@ -15,9 +17,8 @@ class CustomersController < ApplicationController
     
     def get_params
         params.require(:file_url)
+        
         params.as_json.to_h.deep_symbolize_keys
-        file_data = get_file_data(file_url)
-        filter_data(filter_data)
     end
 
     def get_file_data(file_url)
@@ -26,10 +27,13 @@ class CustomersController < ApplicationController
 
     def filter_data(file_data)
         result = []
-        
+        lat_y = DistanceConstants::OFFICE_LAT
+        long_y = DistanceConstants::OFFICE_LONG
         binding.pry
         file_data.each do |data|
-            distance = DistanceCalculator.get_Haversine_distance()
+            lat_x = data["latitude"]
+            long_x = data["longitude"]
+            distance = DistanceCalculator.get_Haversine_distance(lat_x, long_x, lat_y, long_y)
         end
     end 
 end 
