@@ -81,4 +81,4 @@ gem "sidekiq-cron"
 
 gem 'pry'
 
-gem 'aws-sdk-s3'
+gem "aws-sdk-s3", require: false
