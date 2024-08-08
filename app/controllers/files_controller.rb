@@ -15,7 +15,7 @@ class FilesController < ApplicationController
         
         update_file_url(blob, response)
 
-        render json: 
+        render json: response
     end
 
     private
