@@ -27,8 +27,7 @@ class FilesController < ApplicationController
     def direct_upload_json(blob)
         url = blob.service_url_for_direct_upload(expires_in: 15.minutes)
         
-        blob.as_json(root: false, methods: :signed_id).merge(
-          direct_upload: {
+        blob.as_json(root: false, methods: :signed_id).merge({
             url: url,
             headers: blob.service_headers_for_direct_upload
           }
@@ -37,7 +36,7 @@ class FilesController < ApplicationController
 
     def update_file_url(response)
       binding.pry
-      file_url = eval("response[:direct_upload].to_h[:url].split(response[:key]).first+response[:key]")
+      file_url = eval("response['direct_upload'].to_h['url'].split(response[:key]).first+response['key']")
       blob.update_attribute(:file_url, file_url)
     end 
 end 
