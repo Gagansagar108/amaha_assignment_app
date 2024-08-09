@@ -27,8 +27,8 @@ module Customers
         def filter_users(file_data,params)
             result = []
         
-            lat_y = params[:office_lat] || DistanceConstants::OFFICE_LAT
-            long_y = params[:office_long] || DistanceConstants::OFFICE_LONG
+            lat_y = (params[:office_lat] || DistanceConstants::OFFICE_LAT).to_f
+            long_y = (params[:office_long] || DistanceConstants::OFFICE_LONG).to_f
         
             file_data.each do |data|
                 lat_x = data["latitude"].to_f
