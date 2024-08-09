@@ -29,7 +29,7 @@ development:
   host: <%= Rails.application.credentials.dig(:database, :host) %>
   port: <%= Rails.application.credentials.dig(:database, :port) %>
 
-test_default:
+test:
   <<: *default
   database: <%= Rails.application.credentials.dig(:test_database, :name) %>
   username: <%= Rails.application.credentials.dig(:test_database, :user) %>
