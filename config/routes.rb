@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  namespace :file_handler do
+  namespace :files_handler do
     post 'upload_invitation_file', to: 'files_handler#create'
   end 
 
