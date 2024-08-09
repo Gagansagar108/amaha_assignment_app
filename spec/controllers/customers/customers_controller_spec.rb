@@ -22,13 +22,13 @@ RSpec.describe Customers::CustomersController, type: :controller do
       it 'returns the nearest customers as JSON' do
         
         get :get_nearest_customers, params: valid_params
-        binding.pry
+        
         expect(response).to have_http_status(:success)
         json_response = JSON.parse(response.body)
 
         expect(json_response).to have_key('data')
         expect(json_response).to have_key('count')
-
+        binding.pry
         data = json_response['data']
         expect(data).to be_an(Array)
         expect(data.count).to eq(2) 
