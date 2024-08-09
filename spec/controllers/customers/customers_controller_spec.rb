@@ -59,7 +59,7 @@ RSpec.describe Customers::CustomersController, type: :controller do
 
     context 'when file URL is invalid' do
       before do
-        allow(FileReader).to receive(:get_text_file_data).with(invalid_file_url).and_raise(StandardError, 'File is invalid')
+        allow(FileReader).to receive(:get_text_file_data).with(invalid_file).and_raise(StandardError, 'File is invalid')
       end
 
       it 'handles errors and returns an 422 Unprocessable Entity' do
