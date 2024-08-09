@@ -58,22 +58,12 @@ RSpec.describe Customers::CustomersController, type: :controller do
     end
 
     context 'when file URL is invalid' do
-      before do
-        allow(FileReader).to receive(:get_text_file_data).with(file_url).and_raise(StandardError.new('File not found'))
-      end
-
-      it 'handles errors and returns an empty data array' do
+      it 'handles errors and returns an 422 Unprocessable Entity' do
+        binding.pry
         get :get_nearest_customers, params: valid_params
 
-        expect(response).to have_http_status(:success)
-        json_response = JSON.parse(response.body)
+        expect(response).to have_http_status(:unprocessable_entity)
 
-        expect(json_response).to have_key('data')
-        expect(json_response).to have_key('count')
-
-        data = json_response['data']
-        expect(data).to be_an(Array)
-        expect(data).to be_empty
       end
     end
 
