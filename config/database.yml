@@ -31,12 +31,11 @@ development:
 
 test:
   <<: *default
-  database: <%= Rails.application.credentials.dig(:test_database, :name) %>
-  username: <%= Rails.application.credentials.dig(:test_database, :user) %>
-  password: <%= Rails.application.credentials.dig(:test_database, :password) %>
-  host: <%= Rails.application.credentials.dig(:test_database, :host) %>
-  port: <%= Rails.application.credentials.dig(:test_database, :port) %>
-
+  database: amaha_test_db
+  username: <%= ENV.fetch("test_database_username") {Rails.application.credentials.dig(:test_database, :user)} %>
+  password: <%= ENV.fetch("test_database_password") {Rails.application.credentials.dig(:test_database, :password)} %>
+  host: <%= ENV.fetch("test_database_host") {Rails.application.credentials.dig(:test_database, :host)} %>
+  port: <%= ENV.fetch("test_database_port") {Rails.application.credentials.dig(:test_database, :port)} %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
