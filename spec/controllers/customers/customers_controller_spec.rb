@@ -53,7 +53,7 @@ RSpec.describe Customers::CustomersController, type: :controller do
         data = json_response['data']
         expect(data).to be_an(Array)
         expect(data).to be_empty
-        expect(count).to be_an(0)
+        expect(data.count).to be_an(0)
       end
     end
 
