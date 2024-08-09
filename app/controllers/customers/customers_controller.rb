@@ -34,7 +34,7 @@ module Customers
                 lat_x = data["latitude"].to_f
                 long_x = data["longitude"].to_f
                 distance = DistanceCalculator.get_Haversine_distance(lat_x, long_x, lat_y, long_y)
-                result.push(data.slice('user_id', 'name').merge!(distance: distance)) if distance <= (params[:distance_range] || DistanceConstants::DISTANCE_RANGE).to_f
+                result.push(data.slice('user_id', 'name').merge!(distance: round(distance,2))) if distance <= (params[:distance_range] || DistanceConstants::DISTANCE_RANGE).to_f
             end
             result
         end 
