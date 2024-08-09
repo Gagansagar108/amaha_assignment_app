@@ -14,8 +14,8 @@ module Customers
       end
       let(:file_data) do
         [
-          {"user_id": 1, "name": "Vivaan Sharma", "latitude": "-68.850431", "longitude": "-35.814792"}  
-          {"user_id": 2, "name": "Aditya Singh", "latitude": "82.784317", "longitude": "-11.291294"}
+          {"user_id": 1, "name": "Vivaan Sharma", "latitude": "-68.850431", "longitude": "-35.814792"},
+          {"user_id": 2, "name": "Aditya Singh", "latitude": "82.784317", "longitude": "-11.291294"},
           {"user_id": 3, "name": "Ayaan Reddy", "latitude": "-35.328826", "longitude": "134.432403"}
         ]
       end
