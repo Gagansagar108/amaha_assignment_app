@@ -62,7 +62,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: <%= Rails.application.credentials.dig(:test_database, :user) %>
+  database: <%= Rails.application.credentials.dig(:test_database, :name) %>
   username: <%= Rails.application.credentials.dig(:test_database, :user) %>
   password: <%= Rails.application.credentials.dig(:test_database, :password) %>
   host: <%= Rails.application.credentials.dig(:test_database, :host) %>
