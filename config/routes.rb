@@ -5,10 +5,13 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   post 'upload_invitation_file', to: 'files#create'
+  
   get 'get_nearest_customers', to: 'customers#get_nearest_customers'
+  
   require 'sidekiq/web'
+  
   require 'sidekiq/cron/web'
 
-    # mount Sidekiq::Web in your Rails app
+  # mount Sidekiq::Web in your Rails app
   mount Sidekiq::Web => "amaha/sidekiq"
 end
