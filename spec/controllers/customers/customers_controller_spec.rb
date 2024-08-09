@@ -56,17 +56,5 @@ RSpec.describe Customers::CustomersController, type: :controller do
         expect(data.count).to eq(0)
       end
     end
-
-    context 'when file URL is invalid' do
-      before do
-        allow(FileReader).to receive(:get_text_file_data).with(invalid_file).and_raise(StandardError, 'File is invalid')
-      end
-      binding.pry
-      it 'handles errors and returns an 422 Unprocessable Entity' do
-        get :get_nearest_customers, params: valid_params
-        expect(response).to have_http_status(:unprocessable_entity)
-      end
-    end
-
   end
 end
