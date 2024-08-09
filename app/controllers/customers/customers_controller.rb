@@ -1,4 +1,5 @@
-class CustomersController < ApplicationController    
+module Customers
+    class CustomersController < ApplicationController    
     def get_nearest_customers
         params = get_params
         

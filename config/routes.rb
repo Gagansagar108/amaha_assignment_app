@@ -3,10 +3,14 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  namespace :file_handler do
+    post 'upload_invitation_file', to: 'files_handler#create'
+  end 
 
-  post 'upload_invitation_file', to: 'files#create'
+  namespace :customers do
+    get 'get_nearest_customers', to: 'customers#get_nearest_customers'
+  end 
   
-  get 'get_nearest_customers', to: 'customers#get_nearest_customers'
   
   require 'sidekiq/web'
   
