@@ -4,8 +4,12 @@ RSpec.describe Customers::CustomersController, type: :controller do
   describe 'GET #get_nearest_customers' do
     let(:file_url) { 'https://amahastorage.s3.ap-south-1.amazonaws.com/tq0jdn2wj30j8336p89gj7epltwa' }
     let(:valid_params) { { "file_url": file_url, "office_lat": 19.0590317, "office_long": 72.7553452, "distance_range": 100 } }
+   
     let(:distance_out_of_range) { { file_url: 'https://amahastorage.s3.ap-south-1.amazonaws.com/tq0jdn2wj30j8336p89gj7epltwa', "office_lat": 19.0590317, "office_long": 72.7553452, "distance_range": 10 } }
-    let(:invalid_file) { { file_url: 'https://dummy_amahastorage.s3.ap-south-1.amazonaws.com/tq0jdn2wj30j8336p89gj7epltwa', "office_lat": 19.0590317, "office_long": 72.7553452, "distance_range": 10 } }
+   
+    let(:invalid_file_url) { 'https://dummy_amahastorage.s3.ap-south-1.amazonaws.com/tq0jdn2wj30j8336p89gj7epltwa' }
+    let(:invalid_params) { { file_url: invalid_file_url, "office_lat": 19.0590317, "office_long": 72.7553452, "distance_range": 10 } }
+   
     let(:file_data) do
       [
         {"user_id": 1, "name": "Vivaan Sharma", "latitude": 19.850431, "longitude": 72.814792},
@@ -59,12 +63,12 @@ RSpec.describe Customers::CustomersController, type: :controller do
     context 'when parameters are missing' do
 
       before do
-        allow(FileReader).to receive(:get_text_file_data).with(invalid_file).and_raise(StandardError, 'File not found')
+        allow(FileReader).to receive(:get_text_file_data).with(invalid_file_url).and_raise(StandardError, 'File not found')
       end
 
       it 'returns a 422 Unprocessable Entity status with an error message' do
         binding.pry
-        get :get_nearest_customers, params: invalid_file
+        get :get_nearest_customers, params: invalid_params
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.body).to include("param is missing or the value is empty")
       end
