@@ -7,9 +7,9 @@ RSpec.describe Customers::CustomersController, type: :controller do
     let(:invalid_params) { { file_url: 'https://dummy__amahastorage.s3.ap-south-1.amazonaws.com/tq0jdn2wj30j8336p89gj7epltwa' } }
     let(:file_data) do
       [
-        {"user_id": 1, "name": "Vivaan Sharma", "latitude": "19.850431", "longitude": "72.814792"},
-        {"user_id": 2, "name": "Aditya Singh", "latitude": "19.784317", "longitude": "72.291294"},
-        {"user_id": 3, "name": "Ayaan Reddy", "latitude": "-35.328826", "longitude": "134.432403"}
+        {"user_id": 1, "name": "Vivaan Sharma", "latitude": 19.850431, "longitude": 72.814792},
+        {"user_id": 2, "name": "Aditya Singh", "latitude": 19.784317, "longitude": 72.291294},
+        {"user_id": 3, "name": "Ayaan Reddy", "latitude": -35.328826, "longitude": 134.432403}
 
       ]
     end
