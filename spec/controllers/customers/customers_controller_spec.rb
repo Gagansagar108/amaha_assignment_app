@@ -3,7 +3,7 @@ require 'rails_helper'
 module Customers
   RSpec.describe CustomersController, type: :controller do
     describe "GET #get_nearest_customers" do
-      let(:file_url) { 'https://amahastorage.s3.ap-south-1.amazonaws.com/2dqep81snzi1loo23itueiqnef52' }
+      let(:file_url) { 'https://amahastorage.s3.ap-south-1.amazonaws.com/tq0jdn2wj30j8336p89gj7epltwa' }
       let(:params) do
         {
           file_url: file_url,
@@ -14,12 +14,13 @@ module Customers
       end
       let(:file_data) do
         [
-          { "user_id" => 1, "name" => "Vivaan Sharma", "latitude" => -68.850431, "longitude" => -35.814792 },
-          {"user_id"=> 101, "name"=> "Rudra Roy", "latitude"=> "19.0590317", "longitude"=> "72.7553452"}
+          {"user_id": 1, "name": "Vivaan Sharma", "latitude": "-68.850431", "longitude": "-35.814792"}  
+          {"user_id": 2, "name": "Aditya Singh", "latitude": "82.784317", "longitude": "-11.291294"}
+          {"user_id": 3, "name": "Ayaan Reddy", "latitude": "-35.328826", "longitude": "134.432403"}
         ]
       end
 
-      let(:filtered_data) do
+      let(:filter_users) do
         [
           { "user_id" => 1, "name" => "John Doe" }
         ]
@@ -41,7 +42,7 @@ module Customers
         json_response = JSON.parse(response.body)
         expect(json_response).to have_key("data")
         expect(json_response).to have_key("count")
-        expect(json_response["data"]).to eq(filtered_data)
+        expect(json_response["data"]).to eq(filter_users)
       end
 
       it "calls FileReader.get_text_file_data with the correct file_url" do
@@ -52,7 +53,7 @@ module Customers
       it "filters and sorts the data correctly" do
         get :get_nearest_customers, params: params
         json_response = JSON.parse(response.body)
-        expect(json_response["data"]).to eq(filtered_data)
+        expect(json_response["data"]).to eq(filter_users)
       end
     end
   end

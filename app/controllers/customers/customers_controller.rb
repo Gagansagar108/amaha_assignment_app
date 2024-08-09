@@ -5,7 +5,7 @@ module Customers
             
             file_data = get_file_data(params)
             
-            result = filter_data(file_data, params)
+            result = filter_users(file_data, params)
             
             sort_result(result)
             
@@ -24,7 +24,7 @@ module Customers
             FileReader.get_text_file_data(params[:file_url])
         end 
 
-        def filter_data(file_data,params)
+        def filter_users(file_data,params)
             result = []
         
             lat_y = params[:office_lat] || DistanceConstants::OFFICE_LAT
