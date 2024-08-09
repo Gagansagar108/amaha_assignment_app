@@ -14,11 +14,11 @@ RSpec.describe Customers::CustomersController, type: :controller do
       ]
     end
 
-    before do
-      allow(FileReader).to receive(:get_text_file_data).with(file_url).and_return(file_data)
-    end
-
     context 'when parameters are valid' do
+      before do
+        allow(FileReader).to receive(:get_text_file_data).with(file_url).and_return(file_data)
+      end
+
       it 'returns the nearest customers as JSON' do
         
         get :get_nearest_customers, params: valid_params
@@ -42,6 +42,10 @@ RSpec.describe Customers::CustomersController, type: :controller do
     end
 
     context 'when distance is out of range' do
+      before do
+        allow(FileReader).to receive(:get_text_file_data).with(file_url).and_return(file_data)
+      end
+
       it 'returns an empty data array and count zero' do
         get :get_nearest_customers, params: distance_out_of_range
 
@@ -56,5 +60,20 @@ RSpec.describe Customers::CustomersController, type: :controller do
         expect(data.count).to eq(0)
       end
     end
+
+    context 'when parameters are missing' do
+      binding.pry
+      before do
+        allow(FileReader).to receive(:get_text_file_data).with(invalid_file).and_raise(StandardError, 'File not found')
+      end
+
+      it 'returns a 422 Unprocessable Entity status with an error message' do
+        binding.pry
+        get :get_nearest_customers, params: invalid_file
+        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response.body).to include("param is missing or the value is empty")
+      end
+    end
+
   end
 end
