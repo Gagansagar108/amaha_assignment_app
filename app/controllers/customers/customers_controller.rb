@@ -4,6 +4,10 @@ module Customers
             params = get_params
             
             file_data = get_file_data(params)
+
+            render json: { errors: 'user does not exists' },
+                status: :unprocessable_entity
+            return
             
             result = filter_data(file_data, params)
             
