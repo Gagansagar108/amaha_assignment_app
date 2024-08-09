@@ -31,6 +31,7 @@ module Customers
             long_y = (params[:office_long] || DistanceConstants::OFFICE_LONG).to_f
         
             file_data.each do |data|
+                binding.pry
                 lat_x = data["latitude"].to_f
                 long_x = data["longitude"].to_f
                 distance = DistanceCalculator.get_Haversine_distance(lat_x, long_x, lat_y, long_y)
