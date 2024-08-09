@@ -93,3 +93,5 @@ end
 group :test do
   gem 'simplecov', require: false
 end
+
+gem 'dotenv-rails', groups: [:development, :staging, :test]
