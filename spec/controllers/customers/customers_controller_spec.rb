@@ -36,6 +36,7 @@ module Customers
       end
 
       it "renders the correct JSON structure" do
+        binding.pry
         get :get_nearest_customers, params: params
         json_response = JSON.parse(response.body)
         expect(json_response).to have_key("data")
