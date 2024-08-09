@@ -3,10 +3,16 @@ module Customers
         def get_nearest_customers
             params = get_params
             
-            file_data = get_file_data(params)
+            begin
+                file_data = get_file_data(params)
+            rescue => e
+                render json: { errors: "#{e}" },
+                status: :unprocessable_entity
+                return
+            end 
             
             result = filter_users(file_data, params)
-            
+
             sort_result(result)
             
             render json: {"data": result, "count": result.count}
