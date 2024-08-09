@@ -35,8 +35,7 @@ class FilesController < ApplicationController
     end
 
     def update_file_url(blob, response)
-      binding.pry
-      file_url = eval("response['url'].to_s.split(response[:key].to_s).first+response['key']")
+      file_url = eval("response['url'].to_s.split(blob.key).first+blob.key")
       blob.update_attribute(:file_url, file_url)
     end 
 end 
