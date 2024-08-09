@@ -54,7 +54,7 @@ RSpec.describe Customers::CustomersController, type: :controller do
         expect(data).to be_an(Array)
         expect(data).to be_empty
         binding.pry
-        expect(data.count).to be_an(0)
+        expect(data.count).to eq(0)
       end
     end
 
