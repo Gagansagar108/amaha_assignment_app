@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Customers::CustomersController, type: :controller do
   describe 'GET #get_nearest_customers' do
     let(:file_url) { 'https://amahastorage.s3.ap-south-1.amazonaws.com/tq0jdn2wj30j8336p89gj7epltwa' }
-    let(:valid_params) { { file_url: file_url, office_lat: 19.0590317, office_long: 72.7553452, distance_range: 100 } }
+    let(:valid_params) { { "file_url": file_url, "office_lat": 19.0590317, "office_long": 72.7553452, "distance_range": 100 } }
     let(:invalid_params) { { file_url: 'https://dummy__amahastorage.s3.ap-south-1.amazonaws.com/tq0jdn2wj30j8336p89gj7epltwa' } }
     let(:file_data) do
       [
