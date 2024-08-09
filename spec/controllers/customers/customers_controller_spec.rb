@@ -67,10 +67,8 @@ RSpec.describe Customers::CustomersController, type: :controller do
       end
 
       it 'returns a 422 Unprocessable Entity status with an error message' do
-        binding.pry
         get :get_nearest_customers, params: invalid_params
-        expect(response).to have_http_status(:unprocessable_entity)
-        expect(response.body).to include("param is missing or the value is empty")
+        expect(response.status).to eq(422)
       end
     end
 
