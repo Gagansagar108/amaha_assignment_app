@@ -28,14 +28,16 @@ RSpec.describe Customers::CustomersController, type: :controller do
 
         expect(json_response).to have_key('data')
         expect(json_response).to have_key('count')
-        binding.pry
+        
         data = json_response['data']
         expect(data).to be_an(Array)
         expect(data.count).to eq(2) 
 
         first_record = data.first
+        second_record = data.second
+        
         expect(first_record).to include('user_id' => 1, 'name' => 'Vivaan Sharma')
-        expect(data).to include('user_id' => 2, 'name' => 'Aditya Singh')
+        expect(second_record).to include("user_id" => 2, "name" =>  "Aditya Singh")
       end
     end
 
