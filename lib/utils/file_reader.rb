@@ -10,7 +10,7 @@ module FileReader
           end
         end
       rescue 
-        raise "File url is invalid: #{file_url}"
+        raise "File is invalid"
       end
       
       return file_data
