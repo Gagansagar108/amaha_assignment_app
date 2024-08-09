@@ -20,9 +20,9 @@ RSpec.describe Customers::CustomersController, type: :controller do
 
     context 'when parameters are valid' do
       it 'returns the nearest customers as JSON' do
-        binding.pry
-        get :get_nearest_customers, params: valid_params
         
+        get :get_nearest_customers, params: valid_params
+        binding.pry
         expect(response).to have_http_status(:success)
         json_response = JSON.parse(response.body)
 
