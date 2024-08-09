@@ -70,3 +70,28 @@ group :test do
   gem "selenium-webdriver"
 
 end
+
+gem "redis-store"
+
+gem "redis-rails"
+
+gem 'sidekiq', '~> 6.2'
+
+gem "sidekiq-cron"
+
+gem 'pry'
+
+gem "aws-sdk-s3", require: false
+
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'faker'
+end
+
+group :test do
+  gem 'simplecov', require: false
+end
+
+gem 'dotenv-rails', groups: [:development, :staging, :test]
