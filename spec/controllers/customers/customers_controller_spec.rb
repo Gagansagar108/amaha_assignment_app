@@ -56,19 +56,19 @@ RSpec.describe Customers::CustomersController, type: :controller do
       end
     end
 
-    # context 'when parameters are missing' do
+    context 'when parameters are missing' do
 
-    #   before do
-    #     allow(FileReader).to receive(:get_text_file_data).with(invalid_file).and_raise(StandardError, 'File not found')
-    #   end
+      before do
+        allow(FileReader).to receive(:get_text_file_data).with(invalid_file).and_raise(StandardError, 'File not found')
+      end
 
-    #   it 'returns a 422 Unprocessable Entity status with an error message' do
-    #     binding.pry
-    #     get :get_nearest_customers, params: invalid_file
-    #     expect(response).to have_http_status(:unprocessable_entity)
-    #     expect(response.body).to include("param is missing or the value is empty")
-    #   end
-    # end
+      it 'returns a 422 Unprocessable Entity status with an error message' do
+        binding.pry
+        get :get_nearest_customers, params: invalid_file
+        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response.body).to include("param is missing or the value is empty")
+      end
+    end
 
   end
 end
