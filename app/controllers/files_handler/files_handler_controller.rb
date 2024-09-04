@@ -2,6 +2,7 @@ module FilesHandler
   class FilesHandlerController < ApplicationController
       skip_before_action :verify_authenticity_token, only: :create
       def create
+          x = []
           blob_params =  blob_params()
         
           blob = ActiveStorage::Blob.create_before_direct_upload!(
