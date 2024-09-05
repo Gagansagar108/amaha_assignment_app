@@ -1,6 +1,6 @@
 class User
 
-  def speak()
+  def bark()
     return 'user speak'
   end
 
