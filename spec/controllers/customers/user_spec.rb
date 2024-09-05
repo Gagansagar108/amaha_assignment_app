@@ -1,3 +1,6 @@
 describe User do
-  describe 
+  describe '#speak' do
+    usr = User.new
+    expect(usr.speak).to eql?('user speak')
+  end
 end

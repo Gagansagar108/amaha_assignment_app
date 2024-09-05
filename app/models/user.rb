@@ -5,6 +5,6 @@ class User
   end
 
   def self.speak()
-    return 'user speak'
+    return 'user speak self method'
   end
 end
