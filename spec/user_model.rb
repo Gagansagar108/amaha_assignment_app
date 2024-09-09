@@ -1,7 +1,10 @@
 require 'rails_helper'
 
 
-Rspec.describe UserRspec do
+RSpec.describe UserRspec do
 
-
+  describe 'validations' do
+    UserRspec.new
+    binding.pry
+  end
 end
