@@ -1,5 +1,4 @@
 class User
-
   def bark()
     return 'user speak'
   end
