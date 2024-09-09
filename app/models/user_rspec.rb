@@ -1,0 +1,3 @@
+class UserRspec < ActiveRecord
+
+end
