@@ -1,9 +1,4 @@
-class User
-  def bark()
-    return 'user speak'
-  end
+class User < ActiveRecord
 
-  def self.speak()
-    return 'user speak self method'
-  end
+
 end
