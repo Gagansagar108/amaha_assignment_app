@@ -3,10 +3,4 @@
 
  RSpec.describe 'request' do
 
-    describe 'GET /customers/get_nearest_customers' do
-    it 'get' do
-      binding.pry
-      get('/customers/get_nearest_customers')
-    end
-  end
  end
