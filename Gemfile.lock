@@ -108,6 +108,10 @@ GEM
       reline (>= 0.3.8)
     diff-lcs (1.5.1)
     docile (1.4.1)
+    dotenv (3.1.2)
+    dotenv-rails (3.1.2)
+      dotenv (= 3.1.2)
+      railties (>= 6.1)
     erubi (1.13.0)
     et-orbi (1.2.11)
       tzinfo
@@ -329,6 +333,7 @@ DEPENDENCIES
   bootsnap
   capybara
   debug
+  dotenv-rails
   factory_bot_rails
   faker
   importmap-rails
