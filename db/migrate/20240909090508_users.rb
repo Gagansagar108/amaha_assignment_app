@@ -3,7 +3,7 @@ class Users < ActiveRecord::Migration[7.0]
     create_table :users do |col|
       col.string :name
       col.string :email
-      coll.timestamps
+      col.timestamps
     end
   end
 end
