@@ -1,3 +1,3 @@
-class UserRspec < ActiveRecord
+class UserRspec < ApplicationRecord
 
 end
