@@ -95,3 +95,7 @@ group :test do
 end
 
 gem 'dotenv-rails', groups: [:development, :staging, :test]
+
+
+
+gem 'aasm'
